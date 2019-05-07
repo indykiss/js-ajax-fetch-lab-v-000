@@ -25,8 +25,24 @@ function showResults(json) {
 }
 
 function createIssue() {
-  //use this function to create an issue based on the values input in index.html
-}
+  const title = document.querySelector('input#title').value;
+  const body = document.querySelector('input#body').value;
+  const postData = {
+    title: title,
+    body: body
+  };
+  const url = 'https://api.github.com/repos/mattetress/js-ajax-fetch-lab/issues';
+
+  fetch (
+    url, {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        Authorization: `token ${getToken()}`
+      }
+    }
+  ).then(res => res.json())
+  .then(json => getIssues())}
 
 function getIssues() {
   //once an issue is submitted, fetch all open issues to see the issues you are creating
