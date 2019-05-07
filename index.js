@@ -46,5 +46,12 @@ function createIssue() {
 }
 
 function getIssues() {
-  //once an issue is submitted, fetch all open issues to see the issues you are creating
+  const url = 'https://api.github.com/repos/mattetress/js-ajax-fetch-lab/issues'
+
+  fetch(url, {
+    headers: {
+      Authorization: `token ${getToken()}`
+    }
+  }).then(res => res.json())
+    .then(json => console.log(json));
 }
