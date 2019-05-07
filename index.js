@@ -18,8 +18,10 @@ function forkRepo() {
   }
 
 function showResults(json) {
-  //use this function to display the results from forking via the API
-}
+  const url = json.html_url;
+  const link = '<a href="' + url + '" target="_blank">' + url + '</a>';
+  document.getElementById('results').innerHTML = link;
+  console.log(json);}
 
 function createIssue() {
   //use this function to create an issue based on the values input in index.html
